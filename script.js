@@ -37,12 +37,12 @@ function pregunta(){
         b = (alt - 10)/100
         c = (parseInt(alt)+ 10)/100;
         pre.innerHTML = "<h2>Cual es su altura?</h2>"
-        op.innerHTML = "<p> A) "+a+"m    B) "+b+ "m   C) "+c+"m</P"
+        op.innerHTML = `<li>A) ${a}</li> <li>B) ${b}</li> <li>C) ${c}</li>`
     }else if(preg == 2){
         a = "Verdes";
         if(person.eye_color == "blue"){
             b = "Azules";
-        }else if(person.eye_color == "yelLow"){
+        }else if(person.eye_color == "yellow"){
             b = "Amarillos"
         }else if(person.eye_color == "red"){
             b = "Rojo"
@@ -51,19 +51,19 @@ function pregunta(){
         }
         var c = "Negros";
         pre.innerHTML = "<h2>Cual es el color de sus ojos?</h2>"
-        op.innerHTML = "<p> A) "+a+"    B) "+b+ "   C) "+c+"</P"
+        op.innerHTML = `<li>A) ${a}</li> <li>B) ${b}</li> <li>C) ${c}</li>`
     }else if(preg ==3){
         a = 1
         b = 2
         c = person.films.length
         pre.innerHTML = "<h2>En cuantas peliculas aparecio?</h2>"
-        op.innerHTML = "<p> A) "+a+"    B) "+b+ "   C) "+c+"</P"
+        op.innerHTML = `<li>A) ${a}</li> <li>B) ${b}</li> <li>C) ${c}</li>`
     }else if(preg ==4){
         a = person.starships.length;
         b = (person.starships.length)+1;
         c = (person.starships.length)+2;
         pre.innerHTML = "<h2>Cuantas naves ha pilotado?</h2>"
-        op.innerHTML = "<p> A) "+a+"m    B) "+b+ "m   C) "+c+"m</P"
+        op.innerHTML = `<li>A) ${a}</li> <li>B) ${b}</li> <li>C) ${c}</li>`
     }
 }
 
@@ -71,21 +71,15 @@ const buttona = document.getElementById("opcionA");
 const buttonb = document.getElementById("opcionB");
 const buttonc = document.getElementById("opcionC");
 const siguiente = document.getElementById("siguiente");
-var respuesta = document.getElementById("correcto");
-var puntuacion = document.getElementById("puntos");
+const respuesta = document.getElementById("correcto");
+const puntuacion = document.getElementById("puntos");
 var puntos = 0;
 
 buttona.addEventListener('click', () => {
     if(preg == 1 || preg == 4){
         respuesta.innerHTML = "<h1> Correcto! </h1>"
         puntos ++
-        if(preg == 4){
-          puntuacion.innerHTML = "<h2> Puntuacion final: "+puntos+"</h2>"
-          siguiente.disabled = true;
-          buttona.disabled = true;
-          buttonb.disabled = true;
-          buttonc.disabled = true;
-        }
+        if(preg == 4) renderPoints()
     }else{
         respuesta.innerHTML = "<h1> Fallaste! </h1>"
     }
@@ -99,6 +93,7 @@ buttonb.addEventListener('click', () => {
     }else{
         respuesta.innerHTML = "<h1> Fallaste! </h1>"
     }
+    if(preg == 4) renderPoints()
     preg ++
 });
 
@@ -109,6 +104,7 @@ buttonc.addEventListener('click', () => {
     }else{
         respuesta.innerHTML = "<h1> Fallaste! </h1>"
     }
+    if(preg == 4) renderPoints()
     preg ++
 });
 
@@ -118,5 +114,12 @@ siguiente.addEventListener('click', () => {
     respuesta.innerHTML = "<h1></h1>"
     
 })
+function renderPoints(){
+    puntuacion.innerHTML = "<h2> Puntuacion final: "+puntos+"</h2>"
+    siguiente.disabled = true;
+    buttona.disabled = true;
+    buttonb.disabled = true;
+    buttonc.disabled = true;
+}
 
 
