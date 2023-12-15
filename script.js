@@ -7,9 +7,13 @@ console.log(num)
 const endpoint = "https://swapi.dev/api/people/"+num+"/"
 
 fetch(endpoint).then((response) =>{
-    response.json().then((data) => {
+    response.json().then((data) => { 
         person = data
         console.log(person)
     });
 });
+
+
+
+
 
