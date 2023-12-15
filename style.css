@@ -2,7 +2,6 @@ body {
     font-family: 'Arial', sans-serif;
     text-align: center;
     background-color: #000;
-    color: #fff;
     margin: 0;
     padding: 0;
 }
@@ -65,4 +64,11 @@ button:hover {
     color: #007bff;
     font-weight: bold;
 }
+
+img{
+    margin-top: 50px;
+    height: 100px;
+    width: 150px;
+}
+
 
